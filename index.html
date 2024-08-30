@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon de Beauté ElMalika</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Style Global */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #d4af37;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+
+        .logo img {
+            height: 50px; /* Ajustez la hauteur selon vos besoins */
+            margin-right: 20px;
+        }
+
+        .social-icons a img {
+            width: 30px;
+            margin: 0 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 7px;
+            border: 1px solid #ddd;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 7px 15px;
+            border: 1px solid #ddd;
+            border-left: none;
+            background-color: #d4af37;
+            color: #fff;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #b38e2e;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2em;
+            color: #d4af37;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.1em;
+            color: #666;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .service-item {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #d4af37;
+        }
+
+        .service-content p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 15px;
+            height: 60px;
+            overflow: hidden;
+        }
+
+        .service-content span {
+            display: block;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Formulaire de Rendez-vous */
+        .appointment-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto 80px auto;
+        }
+
+        .appointment-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d4af37;
+            font-size: 2em;
+        }
+
+        .appointment-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .appointment-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .appointment-form input,
+        .appointment-form select,
+        .appointment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .appointment-form input:focus,
+        .appointment-form select:focus,
+        .appointment-form textarea:focus {
+            border-color: #d4af37;
+        }
+
+        .appointment-form button {
+            width: 100%;
+            padding: 15px;
+            background-color: #d4af37;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .appointment-form button:hover {
+            background-color: #b38e2e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .section-title h2 {
+                font-size: 1.8em;
+            }
+
+            .appointment-form {
+                padding: 30px;
+            }
+
+            .appointment-form h2 {
+                font-size: 1.8em;
+            }
+        }
+
+        /* Styles pour <details> et <summary> */
+        details {
+            margin-bottom: 20px;
+        }
+
+        summary {
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        summary:hover {
+            background-color: #d4af37;
+            color: #fff;
+        }
+
+        details[open] summary {
+            background-color: #d4af37;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+               <img src="Images/logo_Elmalika.png" alt="Salon de Beauté ElMalika Logo" />
+
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher..." />
+                <button type="submit">🔍</button>
+            </div>
+        </div>
+        <h1>Salon de Beauté ElMalika</h1>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#appointment">Prendre Rendez-vous</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+        <div class="section-title">
+            <h2>Nos Services</h2>
+            <p>Découvrez la gamme complète de nos services professionnels</p>
+        </div>
+
+        <!-- Coiffure Services -->
+        <details>
+            <summary class="section-subtitle">Coiffure</summary>
+            <div class="services">
+                <!-- Services de coiffure -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+
+        <!-- Onglerie Services -->
+        <details>
+            <summary class="section-subtitle">Onglerie</summary>
+            <div class="services">
+                <!-- Services d'onglerie -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+
+        <!-- Soins Visage et Corps -->
+        <details>
+            <summary class="section-subtitle">Soins Visage et Corps</summary>
+            <div class="services">
+                <!-- Services de soins visage et corps -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+
+        <!-- Epilation Services -->
+        <details>
+            <summary class="section-subtitle">Epilation</summary>
+            <div class="services">
+                <!-- Services d'épilation -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+
+        <!-- Spa Services -->
+        <details>
+            <summary class="section-subtitle">Spa</summary>
+            <div class="services">
+                <!-- Services de spa -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+
+        <!-- Maquillage et Chignon Services -->
+        <details>
+            <summary class="section-subtitle">Maquillage et Chignon</summary>
+            <div class="services">
+                <!-- Services de maquillage et chignon -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+
+        <!-- Nos Mariés Services -->
+        <details>
+            <summary class="section-subtitle">Nos Mariés</summary>
+            <div class="services">
+                <!-- Services pour les mariés -->
+                <!-- Vos services ici -->
+            </div>
+        </details>
+    </section>
+
+    <!-- Appointment Form Section -->
+    <section id="appointment" class="container">
+        <div class="appointment-form">
+            <h2>Prendre un Rendez-vous</h2>
+            <form action="https://formkeep.com/forms/a691d2d971ab/designer/edit" method="POST">
+                <div class="form-group">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom" name="nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Prénom :</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                </div>
+                <div class="form-group">
+                    <label for="tel">Numéro de téléphone :</label>
+                    <input type="tel" id="tel" name="tel" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Adresse e-mail :</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service choisi :</label>
+                    <select id="service" name="service" required>
+    <option value="">Sélectionner un service</option>
+    <optgroup label="Coiffure">
+        <option value="Brushing">Brushing</option>
+        <option value="Coupe">Coupe</option>
+        <option value="Teintures Simples">Teintures Simples</option>
+        <option value="Balayage/Ambrés">Balayage/Ambrés</option>
+        <option value="Collagène Caviar">Collagène Caviar</option>
+        <option value="Soins Capillaire Basique">Soins Capillaire Basique</option>
+        <option value="Soins Capillaire Souplesse">Soins Capillaire Souplesse</option>
+        <option value="Soin Lana Caviar">Soin Lana Caviar</option>
+    </optgroup>
+    <optgroup label="Onglerie">
+        <option value="Capsule Gel">Capsule Gel</option>
+        <option value="Gel sur ongle naturels">Gel sur ongle naturels</option>
+        <option value="Vernis permanents mains/pieds">Vernis permanents mains/pieds</option>
+        <option value="Chablon">Chablon</option>
+    </optgroup>
+    <optgroup label="Soins visage">
+        <option value="Soins visage Basique">Soins visage Basique</option>
+        <option value="Soins visage Spécifique">Soins visage Spécifique</option>
+    </optgroup>
+    <optgroup label="Soins mains">
+        <option value="Soins mains Basique">Soins mains Basique</option>
+        <option value="Soins mains Spécifique">Soins mains Spécifique</option>
+    </optgroup>
+    <optgroup label="Soins pieds">
+        <option value="Soins pieds Basique">Soins pieds Basique</option>
+        <option value="Soins pieds Spécifique">Soins pieds Spécifique</option>
+    </optgroup>
+    <optgroup label="Epilation">
+        <option value="Visage (Fil/Cire/Lame)">Visage (Fil/Cire/Lame)</option>
+        <option value="Sourcils">Sourcils</option>
+        <option value="Moustache">Moustache</option>
+        <option value="Bras">Bras</option>
+        <option value="Jambes">Jambes</option>
+        <option value="Corps">Corps</option>
+    </optgroup>
+    <optgroup label="Spa">
+        <option value="Pack Hamam I">Pack Hamam I</option>
+        <option value="Pack Hamam II">Pack Hamam II</option>
+    </optgroup>
+    <optgroup label="Maquillage et Chignon">
+        <option value="Hadhara by équipe">Hadhara by équipe</option>
+        <option value="Hadhara by ElMalika">Hadhara by ElMalika</option>
+        <option value="Chignon">Chignon</option>
+    </optgroup>
+    <optgroup label="Nos Mariés">
+        <option value="Mariées">Mariées</option>
+        <option value="Wteya">Wteya</option>
+        <option value="Sdag">Sdag</option>
+        <option value="Hamem">Hamem</option>
+        <option value="Fiançailles">Fiançailles</option>
+    </optgroup>
+</select>
+
+                </div>
+                <div class="form-group">
+                    <label for="date">Date du rendez-vous :</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Heure du rendez-vous :</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message (optionnel) :</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Vos commentaires ou demandes spéciales..."></textarea>
+                </div>
+                <button type="submit">Valider le Rendez-vous</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <div class="section-title">
+            <h2>Contactez-nous</h2>
+            <p>Pour toute question ou information supplémentaire, n'hésitez pas à nous contacter.</p>
+        </div>
+        <div class="contact-info" style="text-align: center;">
+            <p><strong>Adresse :</strong> Rue Salah Eddine el Ayoubi, rond-point Yatoo, Gabès, Tunisia</p>
+            <p><strong>Téléphone :</strong> +216 27 748 035</p>
+            <p><strong>Email :</strong> contact@elmalika-beaute.com</p>
+            <p><strong>Horaires d'ouverture :</strong> Lundi - Samedi : 9h00 - 19h00</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Salon de Beauté ElMalika. Tous droits réservés.</p>
+        <p>
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+        </p>
+    </footer>
+
+</body>
+</html>
